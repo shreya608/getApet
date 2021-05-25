@@ -30,42 +30,7 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import Foundation
 import XCTest
 
-class PetExplorerRobot: Robot {
-  
-  func tapCat() -> Self {
-    tapCollectionViewElement(text: "Cats")
-    return self
-  }
-  
-  func tapCatType() -> Self {
-    tapCollectionViewStatictext(text: "3 years old")
-    return self
-  }
-  
-  func adoptBird() -> Self {
-    tapCollectionViewElement(text: "Birds")
-    tapCollectionViewStatictext(text: "3 years old")
-    return self
-  }
-  
-  @discardableResult
-  override func assertThat(_ screen: @escaping ( (PetExplorerScreen) -> Void)) -> Self {
-    screen(PetExplorerScreen(self))
-    return self
-  }
-}
-
-class PetExplorerScreen: TestScreen {
-  
-  func has(catLabel: String){
-    let button = app.staticTexts["Cats"]
-    XCTAssertEqual(button.label, catLabel)
-  }
-  
-  override func isDisplayed() {
-    app.waitFor(predicate: elementVisiblePredicate, element: app.navigationBars["Pet Explorer"].staticTexts["Pet Explorer"])
-  }
-}
 

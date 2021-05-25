@@ -42,7 +42,6 @@ class Robot {
     self.app = app
     self.test = test
   }
-  
   /// Override with specific Screen class if required public
   @discardableResult
   func assertThat(_ screen: @escaping ((TestScreen) -> Void)) -> Self {
@@ -72,12 +71,19 @@ class Robot {
     return self
   }
   
-  func tapCollectionViewElement(text: String) -> Self {
+  func tapCollectionViewElement(text: String) {
     let collectionViewsQuery = app.collectionViews
     collectionViewsQuery.buttons[text].otherElements.containing(.staticText,identifier:text).element.tap()
-    return self
   }
   
+  func tapCollectionViewStatictext(text: String) {
+    app.collectionViews.staticTexts[text].tap()
+  }
+  
+  func tapStatictext(text: String) {
+    app.staticTexts[text].tap()
+  }
+
   func waitForLoadingIndicator() {
     let pet = app.staticTexts["petName"]
     app.waitFor(predicate: elementNonExistentPredicate, element: pet, waitTime: acceptanceTestsLongTimeout)

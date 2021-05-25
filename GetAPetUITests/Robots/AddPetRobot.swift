@@ -38,6 +38,14 @@ class AddPetRobot: Robot {
     tap(text:"Adopt")
   }
   
+  func validateAdopetedPetCat() -> Self {
+    tapCollectionViewElement(text: "Cats")
+    tapCollectionViewStatictext(text: "3 years old")
+    tapStatictext(text: "Your pet: Jake")
+    return self
+  }
+  
+  
   @discardableResult
   override func assertThat(_ screen: @escaping ((AdoptPetScreen) -> Void)) -> Self {
     screen(AdoptPetScreen(self))
@@ -50,6 +58,10 @@ class AdoptPetScreen: TestScreen {
   func has(petLabel:String) {
     let button = app.staticTexts["petName"]
     XCTAssertEqual(button.label, petLabel)
+  }
+  
+  override func hasNoAdoptButton() {
+    XCTAssertFalse(app.buttons["Adopt"].exists)
   }
   
   override func isDisplayed() {

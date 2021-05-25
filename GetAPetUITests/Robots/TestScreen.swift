@@ -98,6 +98,13 @@ class TestScreen {
     app.waitFor(predicate: elementNonExistentPredicate, element: petImage, waitTime: acceptanceTestsLongTimeout)
   }
   
+  /// Checks if the adopt button is no longer available
+  
+  func hasNoAdoptButton() {
+    let adoptButton = app.buttons["Adopt"]
+    app.waitFor(predicate: elementNonExistentPredicate, element: adoptButton, waitTime: acceptanceTestsLongTimeout)
+  }
+  
   /// Asserts next Screen is displayed and returns the new Robot
   
   @discardableResult

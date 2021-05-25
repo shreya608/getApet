@@ -53,7 +53,7 @@ class PetExploreTests: XCTestCase {
   
   func testSelectAPet()  {
     PetExplorerRobot(app: app, test: self)
-      .tapCats()
+      .tapCat()
       .tapCatType()
       .assertThat { screen in
         screen.hasChanged(to: AddPetRobot.init)
