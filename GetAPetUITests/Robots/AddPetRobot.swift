@@ -45,6 +45,10 @@ class AddPetRobot: Robot {
     return self
   }
   
+  func validateAdoptedPetBird() -> Self {
+    tapStatictext(text: "Your pet: Swifty")
+    return self
+  }
   
   @discardableResult
   override func assertThat(_ screen: @escaping ((AdoptPetScreen) -> Void)) -> Self {

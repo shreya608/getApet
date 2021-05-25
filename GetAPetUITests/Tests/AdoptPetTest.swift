@@ -30,46 +30,64 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
 import XCTest
 
-let acceptanceTestsDefaultTimeout: TimeInterval = 3
-let acceptanceTestsLongTimeout: TimeInterval = 7
-
-let elementVisiblePredicate = NSPredicate(format: "exists == true AND enabled == true AND hittable = true")
-let elementExistsPredicate = NSPredicate(format: "exists == true AND enabled == true")
-let elementNonExistentPredicate = NSPredicate(format: "exists == false AND enabled == false AND hittable = false")
-let elementNotEnabledPredicate = NSPredicate(format: "enabled == false")
-
-enum SwipeDirection {
-  case up, down
-}
-
-class GetAPetUIApplication: XCUIApplication {
-  let test: XCTestCase
+class AdoptPetTest: XCTestCase {
   
-  init(_ test: XCTestCase) {
-    self.test = test
-    super.init()
-    }
+  var app: GetAPetUIApplication!
   
-  override func launch() {
-    launchEnvironment = [ "UI_TESTS": "YES" ]
-    super.launch()
-    }
+  override func setUpWithError() throws {
+    super.setUp()
+    app = GetAPetUIApplication(self)
+    app.launch()
+    continueAfterFailure = false
+  }
   
-  func waitFor(predicate: NSPredicate,
-               element: XCUIElement,
-               waitTime: TimeInterval? = acceptanceTestsLongTimeout,
-               file: String = #file,
-               line: Int = #line) {
-    let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
-    
-    if (XCTWaiter().wait(for: [expectation], timeout: waitTime!) != .completed) {
-      let message = "Failed to find \(element) after \(waitTime!) seconds."
-      let issue = XCTIssue(type: .assertionFailure, compactDescription: message)
-      self.test.record(issue)
+  override func tearDownWithError() throws {
+    app.terminate()
+    super.tearDown()
+  }
+  
+  func testAdoptPet() {
+    PetExplorerRobot(app: app, test: self)
+      .tapCat()
+      .tapCatType()
+      .assertThat { screen in
+        screen.hasChanged(to: AddPetRobot.init)
+      }
+      .adoptPet()
+      .assertThat { screen in screen.hasChanged(to: PetExplorerRobot.init)        
     }
   }
-}
+  
+  func testAdoptPetSuccess() {
+     testAdoptPet()
+    AddPetRobot(app: app, test: self)
+      .validateAdopetedPetCat()
+      .assertThat({screen in screen.hasNoAdoptButton()})
+    
+  }
+  
+  func testMultipleAdoptPet() {
+    testAdoptPet()        
+  PetExplorerRobot(app: app, test: self)
+    .tapDopDownCat()
+    .adoptBird()
+    .assertThat { screen in
+      screen.hasChanged(to: AddPetRobot.init)
+    }
+    .adoptPet()
+    .assertThat { screen in screen.hasChanged(to: PetExplorerRobot.init)
+      }
+   }
 
+  func testMultipleAdoptPetSucces() {
+    testMultipleAdoptPet()
+    PetExplorerRobot(app: app, test: self)
+      .assertThat { screen in
+        screen.hasChanged(to: PetExplorerRobot.init)
+          .tapDropdownBird()
+          .assertThat({screen in screen.has(title: "your pet: swifty")})
+      }
+  }
+}

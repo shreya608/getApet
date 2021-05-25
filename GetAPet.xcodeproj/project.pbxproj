@@ -18,6 +18,8 @@
 		5CE427E42659B00D0023DD3B /* TestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE427E32659B00D0023DD3B /* TestScreen.swift */; };
 		5CE427EC265A5E830023DD3B /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE427EB265A5E830023DD3B /* Robot.swift */; };
 		5CE427FC265AA8BD0023DD3B /* AddPetRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE427FB265AA8BD0023DD3B /* AddPetRobot.swift */; };
+		5CE42806265B08B50023DD3B /* AdoptPetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42805265B08B50023DD3B /* AdoptPetTest.swift */; };
+		5CE42818265D4CCA0023DD3B /* YourPetRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42817265D4CCA0023DD3B /* YourPetRobot.swift */; };
 		D06304EA2526F46700C13362 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06304E92526F46700C13362 /* Item.swift */; };
 		D0D461DD251F626E004AD6F6 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D461DC251F626E004AD6F6 /* Pet.swift */; };
 		D0D461E0251F6B02004AD6F6 /* PetExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D461DF251F6B02004AD6F6 /* PetExplorerViewController.swift */; };
@@ -50,6 +52,8 @@
 		5CE427E32659B00D0023DD3B /* TestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScreen.swift; sourceTree = "<group>"; };
 		5CE427EB265A5E830023DD3B /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		5CE427FB265AA8BD0023DD3B /* AddPetRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetRobot.swift; sourceTree = "<group>"; };
+		5CE42805265B08B50023DD3B /* AdoptPetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptPetTest.swift; sourceTree = "<group>"; };
+		5CE42817265D4CCA0023DD3B /* YourPetRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourPetRobot.swift; sourceTree = "<group>"; };
 		D06304E92526F46700C13362 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D0D461DC251F626E004AD6F6 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		D0D461DF251F6B02004AD6F6 /* PetExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetExplorerViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				5CE427E32659B00D0023DD3B /* TestScreen.swift */,
 				5CE427EB265A5E830023DD3B /* Robot.swift */,
 				5CE427FB265AA8BD0023DD3B /* AddPetRobot.swift */,
+				5CE42817265D4CCA0023DD3B /* YourPetRobot.swift */,
 			);
 			path = Robots;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				5CC551A52659805200CD32C6 /* PetExplorerTests.swift */,
+				5CE42805265B08B50023DD3B /* AdoptPetTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -286,7 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC551A62659805200CD32C6 /* PetExplorerTests.swift in Sources */,
+				5CE42806265B08B50023DD3B /* AdoptPetTest.swift in Sources */,
 				5CE427EC265A5E830023DD3B /* Robot.swift in Sources */,
+				5CE42818265D4CCA0023DD3B /* YourPetRobot.swift in Sources */,
 				5CE427FC265AA8BD0023DD3B /* AddPetRobot.swift in Sources */,
 				5CE427E42659B00D0023DD3B /* TestScreen.swift in Sources */,
 				5CC551982656AD4500CD32C6 /* TestHelpers.swift in Sources */,

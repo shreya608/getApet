@@ -44,11 +44,24 @@ class PetExplorerRobot: Robot {
     return self
   }
   
-  func adoptBird() -> Self {
-    tapCollectionViewElement(text: "Birds")
-    tapCollectionViewStatictext(text: "3 years old")
+  func tapDopDownCat() -> Self {
+    tapDropDown(text: "Cats")
     return self
   }
+  
+  func tapDropdownBird() -> Self {
+    tapDropDown(text: "Birds")
+    swipeDown()
+    swipeTo(text: "Your Pet:Swifty")
+    return self
+  }
+  
+  func adoptBird() -> Self {
+    tapCollectionViewElement(text: "Birds")
+    tapCollectionViewStatictext(text: "Swifty")
+    return self
+  }
+  
   
   @discardableResult
   override func assertThat(_ screen: @escaping ( (PetExplorerScreen) -> Void)) -> Self {

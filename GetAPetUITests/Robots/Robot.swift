@@ -55,6 +55,38 @@ class Robot {
     return screen(TestScreen(self))
   }
   
+  @discardableResult
+  func swipeUp() -> Self {
+    app.swipeUp()
+    return self
+  }
+  
+  @discardableResult
+  func swipeDown() -> Self {
+    app.swipeDown()
+    return self
+  }
+  
+  @discardableResult
+  func swipeTo(element: XCUIElement, direction: SwipeDirection = SwipeDirection.up) -> Self {
+    // This needs to be fixed.
+    let yCoord = (direction == SwipeDirection.up) ? -262.0 : 262.0
+    
+    while !element.firstMatch.isHittable {
+      let startCoord = app.tables.element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+      let endCoord = startCoord.withOffset(CGVector(dx: 0.0, dy: yCoord))
+      startCoord.press(forDuration: 0.01, thenDragTo: endCoord)
+    }
+    return self
+  }
+  
+  @discardableResult
+  func swipeTo(text: String, direction: SwipeDirection = SwipeDirection.up) -> Self {
+    let element = app.collectionViews.staticTexts[text]
+    swipeTo(element: element, direction: direction)
+    return self
+  }
+  
   func tap(text: String) -> Self {
     app.staticTexts[text].tap()
     return self
@@ -78,6 +110,10 @@ class Robot {
   
   func tapCollectionViewStatictext(text: String) {
     app.collectionViews.staticTexts[text].tap()
+  }
+  
+  func tapDropDown(text:String){
+    app.collectionViews["View"].otherElements[text].tap()
   }
   
   func tapStatictext(text: String) {
