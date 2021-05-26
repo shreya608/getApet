@@ -1,6 +1,6 @@
-# GetAPet Automation
+# GetAPet UI Automation
 
-Automation has been written for GetAPet app using `XCUITest` and [Robot Framework](https://robotframework.org/)
+UI Automation has been written for GetAPet app using `XCUITest` and [Robot Framework](https://robotframework.org/)
 
 ## How to run?
 
