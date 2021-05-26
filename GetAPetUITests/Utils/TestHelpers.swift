@@ -51,12 +51,12 @@ class GetAPetUIApplication: XCUIApplication {
   init(_ test: XCTestCase) {
     self.test = test
     super.init()
-    }
+  }
   
   override func launch() {
     launchEnvironment = [ "UI_TESTS": "YES" ]
     super.launch()
-    }
+  }
   
   func waitFor(predicate: NSPredicate,
                element: XCUIElement,
